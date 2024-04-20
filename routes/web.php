@@ -30,6 +30,6 @@ Route::get('/history-order', [HistoryOrderController::class, 'index']);
 Route::get('/transaksi-order', [TransaksiOrderController::class, 'index']);
 Route::get('/transaksi-order/casier', [TransaksiOrderController::class, 'casier']);
 Route::get('/jenis-pembayaran', [JenisPembayaranController::class, 'index']);
-Route::get('/jenis-layanan', [JenisLayananController::class, 'index']);
+Route::resource('/jenis-layanan', JenisLayananController::class, ['expect' => ['show']]);
 Route::get('/konsumen', [KonsumenController::class, 'index']);
 Route::get('/petugas', [PetugasController::class, 'index']);
