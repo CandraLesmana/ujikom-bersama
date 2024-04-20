@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class JenisLayananController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
+    
     public function index(){
 
         $layanan = JenisLayanan::all();

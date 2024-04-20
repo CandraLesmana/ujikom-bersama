@@ -15,6 +15,7 @@
                     </nav>
                 </div>
                 <div class="card-body">
+                    
                     @php($isEdit = isset($data))                             
                     <div class="d-flex justify-content-end mb-2">
                         <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addJenisLayanan"> Tambah Jenis Layanan</button>
@@ -50,7 +51,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped">
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th class="fw-semibold mb-0 text-center" style="width: 10px;">No</th>

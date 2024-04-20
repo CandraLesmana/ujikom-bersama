@@ -23,13 +23,27 @@ use App\Http\Controllers\TransaksiOrderController;
 */
 
 Route::get('/', [MainController::class, 'index']);
+
 Route::get('/login', [LoginController::class, 'index']);
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::get('/petugas', [PetugasController::class, 'index']);
+
 Route::get('/history-order', [HistoryOrderController::class, 'index']);
+
 Route::get('/transaksi-order', [TransaksiOrderController::class, 'index']);
 Route::get('/transaksi-order/casier', [TransaksiOrderController::class, 'casier']);
+
 Route::get('/jenis-pembayaran', [JenisPembayaranController::class, 'index']);
+Route::post('/jenis-pembayaran/store', [JenisPembayaranController::class, 'store'])->name('jenis-pembayaran.store');
+Route::put('/jenis-pembayaran/update/{id}', [JenisPembayaranController::class, 'update'])->name('jenis-pembayaran.update');
+Route::delete('/jenis-pembayaran/destroy/{id}', [JenisPembayaranController::class, 'destroy'])->name('jenis-pembayaran.destroy');
+
 Route::resource('/jenis-layanan', JenisLayananController::class, ['expect' => ['show']]);
+
 Route::get('/konsumen', [KonsumenController::class, 'index']);
+
 Route::get('/petugas', [PetugasController::class, 'index']);

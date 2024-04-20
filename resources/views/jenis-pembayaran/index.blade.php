@@ -17,6 +17,38 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12">
+
+                                {{-- Button Modal --}}
+                                <div class="d-flex justify-content-end mb-3">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        Tambah Jenis Pembayaran
+                                    </button>
+                                </div>
+                                  
+                                  <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Pembayaran</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('jenis-pembayaran.store') }}" method="POST">
+                                        @csrf
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="">Nama Jenis Pembayaran</label>
+                                                <input type="text" class="form-control" placeholder="Nama Jenis Pembayaran" name="nm_jns_pembayaran">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                </div>
+
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
@@ -33,36 +65,52 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Cash</td>
-                                                <td>
-                                                    <div class="btn-group" role="grup" aria-label="Basic Example">
-                                                        <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button>
-                                                        <button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i> Delete</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>QRIS</td>
-                                                <td>
-                                                    <div class="btn-group" role="grup" aria-label="Basic Example">
-                                                        <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button>
-                                                        <button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i> Delete</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Transfer</td>
-                                                <td>
-                                                    <div class="btn-group" role="grup" aria-label="Basic Example">
-                                                        <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button>
-                                                        <button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i> Delete</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @foreach ($data as $item)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $item->nama }}</td>
+                                                    <td>
+                                                        <div class="btn-group" role="grup" aria-label="Basic Example">
+                                                            {{-- <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button> --}}
+                                                            {{-- Button Modal Edit --}}
+                                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $item->id }}">
+                                                                <i class="ti ti-edit"></i> Edit
+                                                            </button>
+                                                              
+                                                              <!-- Modal Edit-->
+                                                            <div class="modal fade" id="modalEdit{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Pembayaran</h5>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form action="{{ route('jenis-pembayaran.update', $item->id) }}" method="POST">
+                                                                        @method('PUT');
+                                                                        @csrf
+                                                                        <div class="modal-body">
+                                                                            <div class="form-group">
+                                                                                <label for="">Nama Jenis Pembayaran</label>
+                                                                                <input type="text" class="form-control" value="{{ $item->nama }}" placeholder="Nama Jenis Pembayaran" name="nm_jns_pembayaran">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                                                        </div>
+                                                                    </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <form action="{{ route('jenis-pembayaran.destroy', $item->id) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm btn-danger"><i class="ti ti-trash"></i> Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

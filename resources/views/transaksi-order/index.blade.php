@@ -9,7 +9,7 @@
                     <h3>Transaksi Order</h3>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><Link to='/'>Home</Link></li>
+                            <li class="breadcrumb-item"><a href='/'>Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Transaksi Order</li>
                         </ol>
                     </nav>
@@ -58,7 +58,7 @@
                                             <td>Candra</td>
                                             <td>08123456789</td>
                                             <td>
-                                                <Link to="/transaksi-order/casier" class="btn btn-secondary"><i class="ti ti-plus"></i> Order</Link>
+                                                <a href="/transaksi-order/casier" class="btn btn-secondary"><i class="ti ti-plus"></i> Order</a>
                                                 {{-- <button class="btn btn-sm btn-success"></button> --}}
                                             </td>
                                         </tr>

@@ -8,7 +8,39 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['guest'])->except('logout');
+    }
+
     public function index(){
         return view('auth.login');
+    }
+
+    public function login(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $credentials = $request->only('email', 'password');
+
+        if (!auth()->attempt($credentials)) {
+            if (!User::where('email', $request->email)->exists()) {
+                return back()->with(['message' => 'Email Yang Anda Masukan Salah !', 'status' => 'danger']);;
+            } else {
+                return back()->with(['message' => 'Password Yang Anda Masukan Salah !', 'status' => 'danger']);
+            }
+        }       
+
+        // genearte token
+        auth()->user()->createToken('authToken')->accessToken;
+
+        return redirect()->route('dashboard')->with(['message' => 'Login Berhasil !', 'status' => 'success']);
+    }
+
+    public function logout(){
+        auth()->logout();
+
+        return redirect('/login');
     }
 }

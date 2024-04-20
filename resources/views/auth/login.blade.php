@@ -21,21 +21,27 @@
                                 <img src="../assets/images/logos/dark-logo.svg" width="180" alt=""/>
                                 </a>
                                 <p class="text-center">Your Social Campaigns</p>
+
+                                @if (session()->has('status') && session()->has('message'))
+                                    <div class="alert alert-{{ session('status') }}" role="alert">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('login') }}" method="POST">
+                                    @csrf
                                     <div class="mb-3">
                                         <label htmlFor="exampleInputEmail1" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" valaria-describedby="emailHelp"/>
+                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" valaria-describedby="emailHelp"/>
                                     </div>
                                     <div class="mb-4">
                                         <label htmlFor="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1"/>
+                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1"/>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" onClick={handleClick}>Sign In</button>
+                                        <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
                                     </div>
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <p class="fs-4 mb-0 fw-bold">New to Modernize?</p>
-                                    <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Create an account</a>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>

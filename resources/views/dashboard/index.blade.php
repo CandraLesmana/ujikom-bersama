@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container-fluid">
+        @if (session()->has('status') && session()->has('message'))
+            <div class="alert alert-{{ session('status') }}" role="alert">
+                {{ session('message') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-lg-8 d-flex align-items-strech">
                 <div class="card w-100">
