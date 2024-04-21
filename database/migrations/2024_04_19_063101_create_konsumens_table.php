@@ -17,7 +17,7 @@ class CreateKonsumensTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('kode');
-            $table->integer('no_hp');
+            $table->string('no_hp');
             $table->string('alamat');
             $table->timestamps();
         });

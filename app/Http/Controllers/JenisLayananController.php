@@ -19,13 +19,6 @@ class JenisLayananController extends Controller
         //
     }
 
-    public function edit($id)
-    {
-        $data = JenisLayanan::find($id);
-
-        return $data;
-    }
-
     public function store(Request $request)
     {
         $isEdit = $request->id ? true : false;
@@ -57,8 +50,7 @@ class JenisLayananController extends Controller
 
         return redirect()->route('jenis-layanan.index')->with([
             'status' => 'success',
-            'message' => $isEdit ? 'Berhasil edit Layanan' : 'Berhasil menambah Layanan',
-            'data' => $data
+            'message' => $isEdit ? 'Berhasil edit Layanan' : 'Berhasil menambah Layanan'
         ]);
     }
 

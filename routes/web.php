@@ -30,6 +30,10 @@ Route::get('/history-order', [HistoryOrderController::class, 'index']);
 Route::get('/transaksi-order', [TransaksiOrderController::class, 'index']);
 Route::get('/transaksi-order/casier', [TransaksiOrderController::class, 'casier']);
 Route::get('/jenis-pembayaran', [JenisPembayaranController::class, 'index']);
+Route::post('/jenis-pembayaran/store', [JenisPembayaranController::class, 'store'])->name('store');
+Route::put('/jenis-pembayaran/update/{id}', [JenisPembayaranController::class, 'update'])->name('update');
+Route::delete('/jenis-pembayaran/delete/{id}', [JenisPembayaranController::class, 'destroy'])->name('delete');
+
 Route::resource('/jenis-layanan', JenisLayananController::class, ['expect' => ['show']]);
-Route::get('/konsumen', [KonsumenController::class, 'index']);
+Route::resource('/konsumen', KonsumenController::class, ['expect' => ['show']]);
 Route::get('/petugas', [PetugasController::class, 'index']);
