@@ -9,6 +9,7 @@ use App\Http\Controllers\JenisLayananController;
 use App\Http\Controllers\KonsumenController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PemimpinController;
 use App\Http\Controllers\TransaksiOrderController;
 
 /*
@@ -35,13 +36,26 @@ Route::get('/petugas', [PetugasController::class, 'index']);
 Route::get('/history-order', [HistoryOrderController::class, 'index']);
 
 Route::get('/transaksi-order', [TransaksiOrderController::class, 'index']);
-Route::get('/transaksi-order/casier', [TransaksiOrderController::class, 'casier']);
+Route::get('/transaksi-order/casier/{id}', [TransaksiOrderController::class, 'casier'])->name('transaksi-order.casier');
+Route::get('/transaksi-order/detailOrder/{id_jns_layanan}/{total_berat}', [TransaksiOrderController::class, 'detailOrder'])->name('transaksi-order.detailOrder');
+Route::post('/transaksi-order/casier/store', [TransaksiOrderController::class, 'store'])->name('transaksi-order.store');
 
 Route::get('/jenis-pembayaran', [JenisPembayaranController::class, 'index']);
-Route::post('/jenis-pembayaran/store', [JenisPembayaranController::class, 'store'])->name('store');
-Route::put('/jenis-pembayaran/update/{id}', [JenisPembayaranController::class, 'update'])->name('update');
-Route::delete('/jenis-pembayaran/delete/{id}', [JenisPembayaranController::class, 'destroy'])->name('delete');
+Route::post('/jenis-pembayaran/store', [JenisPembayaranController::class, 'store'])->name('jenis-pembayaran.store');
+Route::put('/jenis-pembayaran/update/{id}', [JenisPembayaranController::class, 'update'])->name('jenis-pembayaran.update');
+Route::delete('/jenis-pembayaran/delete/{id}', [JenisPembayaranController::class, 'destroy'])->name('jenis-pembayaran.destroy');
 
 Route::resource('/jenis-layanan', JenisLayananController::class, ['expect' => ['show']]);
+
 Route::resource('/konsumen', KonsumenController::class, ['expect' => ['show']]);
+
 Route::get('/petugas', [PetugasController::class, 'index']);
+Route::post('/petugas/store', [PetugasController::class, 'store'])->name('petugas.store');
+Route::put('/petugas/update/{id}', [PetugasController::class, 'update'])->name('petugas.update');
+Route::delete('/petugas/delete/{id}', [PetugasController::class, 'destroy'])->name('petugas.delete');
+
+Route::get('/pemimpin', [PemimpinController::class, 'index']);
+Route::post('/pemimpin/store', [PemimpinController::class, 'store'])->name('pemimpin.store');
+Route::put('/pemimpin/update/{id}', [PemimpinController::class, 'update'])->name('pemimpin.update');
+Route::delete('/pemimpin/delete/{id}', [PemimpinController::class, 'destroy'])->name('pemimpin.delete');
+

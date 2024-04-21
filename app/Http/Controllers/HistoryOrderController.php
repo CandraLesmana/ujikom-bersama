@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistoryOrder;
 use Illuminate\Http\Request;
 
 class HistoryOrderController extends Controller
@@ -11,6 +12,8 @@ class HistoryOrderController extends Controller
     }
     
     public function index(){
-        return view('history-order.index');
+        $data = HistoryOrder::with('konsumen', 'jenis_pembayaran', 'jenis_layanan')->get();
+
+        return view('history-order.index', compact('data'));
     }
 }

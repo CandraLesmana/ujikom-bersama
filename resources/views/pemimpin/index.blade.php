@@ -6,11 +6,11 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header bg-light-primary">
-                        <h3>Data Petugas</h3>
+                        <h3>Data Pemimpin</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Petugas</li>
+                                <li class="breadcrumb-item active" aria-current="page">Pemimpin</li>
                             </ol>
                         </nav>
                     </div>
@@ -25,7 +25,7 @@
                                                     <h6 class="fw-semibold mb-0">No</h6>
                                                 </td>
                                                 <td>
-                                                    <h6 class="fw-semibold mb-0">Nama Pegawai</h6>
+                                                    <h6 class="fw-semibold mb-0">Nama Pemimpin</h6>
                                                 </td>
                                                 <td>
                                                     <h6 class="fw-semibold mb-0">Email</h6>

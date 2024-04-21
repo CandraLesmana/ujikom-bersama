@@ -24,7 +24,40 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="d-flex justify-content-end">
-                                <button type="button" class="btn btn-info"><i class="ti ti-plus"></i> Tambah Konsumen</button>
+                                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addKonsumen">
+                                    Tambah Konsumen
+                                </button>
+                            </div>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="addKonsumen" tabindex="-1" aria-labelledby="addKonsumenLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="addKonsumenLabel">Tambah Konsumen</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('konsumen.store') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" id="id" name="id" value="{{ $data->id ?? '' }}" />
+                                                <div class="mb-3">
+                                                    <label for="name" class="form-label">Nama</label>
+                                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $data->name ?? '') }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="no_hp" class="form-label">No Telpon</label>
+                                                    <input type="number" class="form-control" id="no_hp" name="no_hp" min="0" value="{{ old('no_hp', $data->no_hp ?? '') }}" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="alamat" class="form-label">Alamat</label>
+                                                    <textarea class="form-control" name="alamat" id="alamat"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,16 +85,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($konsumen as $item)
                                         <tr>
-                                            <td>1</td>
-                                            <td>KSN-001</td>
-                                            <td>Candra</td>
-                                            <td>08123456789</td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->kode }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->no_hp }}</td>
                                             <td>
-                                                <a href="/transaksi-order/casier" class="btn btn-secondary"><i class="ti ti-plus"></i> Order</a>
+                                                <a href="/transaksi-order/casier/{{ $item->id }}" class="btn btn-secondary"><i class="ti ti-plus"></i> Order</a>
                                                 {{-- <button class="btn btn-sm btn-success"></button> --}}
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class PetugasController extends Controller
+class PemimpinController extends Controller
 {
     public function __construct(){
         $this->middleware(['auth']);
@@ -14,21 +14,21 @@ class PetugasController extends Controller
     
     public function index(){
         $data = User::whereHas('roles', function ($query) {
-            $query->where('name', 'Petugas');
+            $query->where('name', 'Pemimpin');
         })->get();
 
-        return view('petugas.index', compact('data'));
+        return view('pemimpin.index', compact('data'));
     }
 
     public function store(Request $request){
 
-        $petugas = User::craete([
+        $pemimpin = User::craete([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        $petugas->assignRole([2]);
+        $pemimpin->assignRole([3]);
 
         return redirect()->back();
     }

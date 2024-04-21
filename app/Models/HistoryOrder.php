@@ -30,4 +30,8 @@ class HistoryOrder extends Model
         return $this->belongsTo(JenisPembayaran::class, 'id_jenis_pembayaran', 'id');
     }
     
+    public function jenis_layanan()
+    {
+        return $this->belongsTo(JenisLayanan::class, 'id_jenis_layanan', 'id');
+    }
 }

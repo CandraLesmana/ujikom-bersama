@@ -11,4 +11,9 @@ class JenisLayanan extends Model
 
     protected $table = 'jenis_layanans';
     protected $fillable = ['name', 'price'];
+
+    public function history_order()
+    {
+        return $this->hasMany(HistoryOrder::class, 'id_jenis_layanan', 'id');
+    }
 }

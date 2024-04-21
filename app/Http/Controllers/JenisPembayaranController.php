@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\JenisPembayaran;
-use App\Models\JenisPembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,33 +18,33 @@ class JenisPembayaranController extends Controller
         return view('jenis-pembayaran.index', compact('data'));
     }
 
-    public function store(Request $request)
-    {
-        $data = JenisPembayaran::create([
-            'nama' => $request->nama,
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $data = JenisPembayaran::create([
+    //         'nama' => $request->nama,
+    //     ]);
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
-    public function update(Request $request,$id){
-        $data = JenisPembayaran::find($id);
-        $data->update([
-            'nama' => $request->nama,
-        ]);
+    // public function update(Request $request,$id){
+    //     $data = JenisPembayaran::find($id);
+    //     $data->update([
+    //         'nama' => $request->nama,
+    //     ]);
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 
-    public function destroy($id){
-        $data = JenisPembayaran::find($id);
-        $data->delete();
+    // public function destroy($id){
+    //     $data = JenisPembayaran::find($id);
+    //     $data->delete();
 
-        return redirect()->back();
-        $data = JenisPembayaran::all();
+    //     return redirect()->back();
+    //     $data = JenisPembayaran::all();
 
-        return view('jenis-pembayaran.index', compact('data'));
-    }
+    //     return view('jenis-pembayaran.index', compact('data'));
+    // }
 
     public function store(Request $request){
 
@@ -58,7 +57,7 @@ class JenisPembayaranController extends Controller
         }
 
         JenisPembayaran::create([
-            'nama' => $request->nm_jns_pembayaran
+            'name' => $request->nm_jns_pembayaran
         ]);
 
         return redirect()->back();
@@ -76,7 +75,7 @@ class JenisPembayaranController extends Controller
         }
 
         $data->update([
-            'nama' => $request->nm_jns_pembayaran
+            'name' => $request->nm_jns_pembayaran
         ]);
 
         return redirect()->back();

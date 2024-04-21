@@ -57,7 +57,7 @@ class KonsumenController extends Controller
             }
         }
         
-        return redirect()->route('konsumen.index')->with([
+        return redirect()->back()->with([
             'status' => 'success',
             'message' => $isEdit ? 'Berhasil edit Konsumen' : 'Berhasil menambah Konsumen',
         ]);

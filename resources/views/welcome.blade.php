@@ -17,6 +17,9 @@
         <link href="{{ asset('css/bootstrap-icons.css') }}" rel="stylesheet">
 
         <link rel="stylesheet" href="{{ asset('css/templatemo-topic-listing.css') }}">
+
+        {{-- <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" /> --}}
+
     </head>
     <body>
         <main>
@@ -72,9 +75,10 @@
                     <div class="row">
 
                         <div class="col-lg-8 col-12 mx-auto">
-                            <h1 class="text-white text-center">Discover. Learn. Enjoy</h1>
+                            <h1 class="text-white text-center">Selamat Datang</h1>
+                            <h2 class="text-white text-center">Di Laundry Kami</h2>
 
-                            <h6 class="text-center">platform for creatives around the world</h6>
+                            <h6 class="text-center">Anda bisa cari Laundry anda disini ..</h6>
 
                             <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
                                 <div class="input-group input-group-lg">
@@ -82,9 +86,9 @@
                                         
                                     </span>
 
-                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Design, Code, Marketing, Finance ..." aria-label="Search">
+                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Masukan Nama, Nomor Hp atau Kode Kustomer Anda . . ." aria-label="Search">
 
-                                    <button type="submit" class="form-control">Search</button>
+                                    <button type="submit" class="form-control">Cari</button>
                                 </div>
                             </form>
                         </div>
@@ -93,74 +97,104 @@
                 </div>
             </section>
 
+            <section class="table-history-order">
+                <div class="container mt-5">
 
-            <section class="featured-section">
-                <div class="container">
+                    <div class="col-12 text-center">
+                        <h2 class="mb-4">History Order Anda</h1>
+                    </div>
+
+                </div>
+            
+                <div class="container-fluid">
                     <div class="row justify-content-center">
-
-                        <div class="col-lg-4 col-12 mb-4 mb-lg-0">
-                            <div class="custom-block bg-white shadow-lg">
-                                <a href="topics-detail.html">
-                                    <div class="d-flex">
-                                        <div>
-                                            <h5 class="mb-2">Web Design</h5>
-
-                                            <p class="mb-0">When you search for free CSS templates, you will notice that TemplateMo is one of the best websites.</p>
-                                        </div>
-
-                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
-                                    </div>
-
-                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-12">
-                            <div class="custom-block custom-block-overlay">
-                                <div class="d-flex flex-column h-100">
-                                    <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="">
-
-                                    <div class="custom-block-overlay-text d-flex">
-                                        <div>
-                                            <h5 class="text-white mb-2">Finance</h5>
-
-                                            <p class="text-white">Topic Listing Template includes homepage, listing page, detail page, and contact page. You can feel free to edit and adapt for your CMS requirements.</p>
-
-                                            <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
-                                        </div>
-
-                                        <span class="badge bg-finance rounded-pill ms-auto">25</span>
-                                    </div>
-
-                                    <div class="social-share d-flex">
-                                        <p class="text-white me-4">Share:</p>
-
-                                        <ul class="social-icon">
-                                            <li class="social-icon-item">
-                                                <a href="#" class="social-icon-link bi-twitter"></a>
-                                            </li>
-
-                                            <li class="social-icon-item">
-                                                <a href="#" class="social-icon-link bi-facebook"></a>
-                                            </li>Designms-auto"></a>
-                                    </div>
-
-                                    <div class="section-overlay"></div>
+                        <div class="col-lg-8 d-flex align-items-stretch">
+                            <div class="card w-100">
+                            <div class="card-body p-4">
+                                <div class="table-responsive">
+                                <table class="table text-nowrap mb-0 align-middle">
+                                    <thead class="text-dark fs-4">
+                                    <tr>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">No</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Tanggal</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Nama</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Jenis Layanan</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Berat</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Jenis Pembayaran</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Total Harga</h6>
+                                        </th>
+                                        <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Status</h6>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $item)
+                                            <tr>
+                                                <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $loop->iteration }}</h6></td>
+                                                <td class="border-bottom-0">
+                                                <p class="mb-0 fw-normal">{{ $item->tanggal }}</p>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $item->konsumen->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $item->jenis_layanan->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $item->total_berat }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $item->jenis_pembayaran->name }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    <h6 class="fw-semibold mb-1">{{ $item->total_harga }}</h6>
+                                                </td>
+                                                <td class="border-bottom-0">
+                                                    @if($item->status == 1)
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <span class="badge bg-warning rounded-3 fw-semibold">Dalam Proses</span>
+                                                        </div>
+                                                    @elseif($item->status == 2)
+                                                        <div class="d-flex align-items-center gap-2">
+                                                            <span class="badge bg-danger rounded-3 fw-semibold">Belum Bayar</span>
+                                                        </div>
+                                                    @else
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <span class="badge bg-success rounded-3 fw-semibold">Selesai</span>
+                                                    </div>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                                 </div>
                             </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
             </section>
 
-
             <section class="explore-section section-padding" id="section_2">
-                <div class="container">Design
+                <div class="container">
 
                         <div class="col-12 text-center">
-                            <h2 class="mb-4">Browse Topics</h1>
+                            <h2 class="mb-4">Fitur Kami ..</h1>
                         </div>
 
                     </div>
@@ -170,7 +204,7 @@
                     <div class="row">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Design</button>
+                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Jenis Layanan</button>
                             </li>
 
                             <li class="nav-item" role="presentation">

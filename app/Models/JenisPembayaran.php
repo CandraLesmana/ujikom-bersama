@@ -11,6 +11,11 @@ class JenisPembayaran extends Model
 
     protected $table = 'jenis_pembayarans';
     protected $fillable = [
-        'nama'
+        'name'
     ];
+
+    public function history_order()
+    {
+        return $this->hasMany(HistoryOrder::class, 'id_jenis_pembayaran', 'id');
+    }
 }

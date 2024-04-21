@@ -16,4 +16,9 @@ class Konsumen extends Model
         'no_hp',
         'alamat'
     ];
+
+    public function history_order()
+    {
+        return $this->hasMany(HistoryOrder::class, 'id_konsumen', 'id');
+    }
 }

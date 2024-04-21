@@ -51,15 +51,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($data as $item)
                                         <tr>
-                                            <td>1</td>
-                                            <td>22-Maret-2024</td>
-                                            <td>Candra</td>
-                                            <td>Laundry Kiloan</td>
-                                            <td>3,4 Kg</td>
-                                            <td>Cash</td>
-                                            <td>Rp 24.000</td>
-                                            <td><span class="badge bg-warning">Dalam Proses</span></td>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ Carbon\Carbon::parse($item->tanggal)->format('d-M-Y') }}</td>
+                                            <td>{{ $item->konsumen->name }}</td>
+                                            <td>{{ $item->jenis_layanan->name }}</td>
+                                            <td>{{ $item->total_berat }} Kg</td>
+                                            <td>{{ $item->jenis_pembayaran->name }}</td>
+                                            <td>Rp {{ $item->total_harga }}</td>
+                                            <td>
+                                                @if($item->status == 1)
+                                                    <span class="badge bg-warning">Dalam Proses</span>
+                                                @elseif($item->status == 2)
+                                                    <span class="badge bg-danger">Belum Bayar</span>
+                                                @else
+                                                    <span class="badge bg-success">Selesai</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <div class="btn-group" role="grup" aria-label="Basic Example">
                                                     <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button>
@@ -67,38 +76,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>22-Maret-2024</td>
-                                            <td>Candra</td>
-                                            <td>Laundry Kiloan</td>
-                                            <td>3,4 Kg</td>
-                                            <td>Cash</td>
-                                            <td>Rp 24.000</td>
-                                            <td><span class="badge bg-danger">Belum Bayar</span></td>
-                                            <td>
-                                                <div class="btn-group" role="grup" aria-label="Basic Example">
-                                                    <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button>
-                                                    <button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i> Delete</button>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>22-Maret-2024</td>
-                                            <td>Candra</td>
-                                            <td>Laundry Kiloan</td>
-                                            <td>3,4 Kg</td>
-                                            <td>Cash</td>
-                                            <td>Rp 24.000</td>
-                                            <td><span class="badge bg-success">Selesai</span></td>
-                                            <td>
-                                                <div class="btn-group" role="grup" aria-label="Basic Example">
-                                                    <button class="btn btn-sm btn-info"><i class="ti ti-edit"></i> Edit</button>
-                                                    <button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i> Delete</button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

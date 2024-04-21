@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -32,8 +33,9 @@ class LoginController extends Controller
             }
         }       
 
-        // genearte token
-        auth()->user()->createToken('authToken')->accessToken;
+        // dd Auth user dan role nya
+        // dd(Auth::user()->getRoleNames());
+
 
         return redirect()->route('dashboard')->with(['message' => 'Login Berhasil !', 'status' => 'success']);
     }
